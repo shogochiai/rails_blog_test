@@ -1,0 +1,35 @@
+<h1>Listing events</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Description</th>
+    <th>Photo</th>
+    <th>Date</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<div>
+<% @events.each do |event| %>
+  <tr>
+    <td><%= event.title %></td>
+    <td><%= event.description %></td>
+    <td><%= image_tag event.photo.thumb.url %></td>
+    <td><%= event.date %></td>
+    <td><%= link_to 'Show', event %></td>
+    <td><%= link_to 'Edit', edit_event_path(event) %></td>
+    <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</div>
+</table>
+
+
+<%= paginate @events %>
+
+
+<br />
+
+<%= link_to 'New Event', new_event_path %>
